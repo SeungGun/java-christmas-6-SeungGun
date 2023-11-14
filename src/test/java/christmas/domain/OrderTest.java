@@ -49,4 +49,19 @@ class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.NOT_EXIST_MENU_NAME_IN_MENU_BOARD.getMessage());
     }
+
+    @Test
+    void 중복되는_메뉴이름_예외테스트() {
+        // given
+        String name = "아이스크림";
+        Menu menu = MenuBoard.findMenuByName(name);
+
+        List<DetailOrder> detailOrders = List.of(
+                new DetailOrder(menu, 2),
+                new DetailOrder(menu, 3));
+
+        assertThatThrownBy(() -> new Order(detailOrders))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.DUPLICATE_MENU_NAME_IN_ORDER.getMessage());
+    }
 }

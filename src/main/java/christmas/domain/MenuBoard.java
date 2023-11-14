@@ -17,4 +17,9 @@ public class MenuBoard {
             new Menu("레드와인", Category.BEVERAGE, 60000),
             new Menu("샴페인", Category.BEVERAGE, 25000)
     );
+
+    public static boolean containsName(String name) {
+        return menus.stream()
+                .anyMatch(menu -> menu.getName().equals(name));
+    }
 }

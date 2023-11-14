@@ -22,4 +22,11 @@ public class MenuBoard {
         return menus.stream()
                 .anyMatch(menu -> menu.getName().equals(name));
     }
+
+    public static Menu findMenuByName(String name){
+        return menus.stream()
+                .filter(menu -> menu.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
 }

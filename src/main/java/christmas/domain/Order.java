@@ -13,6 +13,7 @@ public class Order {
     public Order(List<DetailOrder> detailOrders) {
         validateMenuCount(detailOrders);
         validateMenuNameIncludedInMenuBoard(detailOrders);
+        validateDuplicateMenuName(detailOrders);
         this.detailOrders = detailOrders;
     }
 
@@ -34,6 +35,19 @@ public class Order {
         return detailOrders.stream()
                 .mapToInt(DetailOrder::getCount)
                 .sum();
+    }
+
+    private void validateDuplicateMenuName(List<DetailOrder> detailOrders) {
+        if (calculateUniqueMenuNameCount(detailOrders) != detailOrders.size()) {
+            triggerArgException(DUPLICATE_MENU_NAME_IN_ORDER);
+        }
+    }
+
+    private int calculateUniqueMenuNameCount(List<DetailOrder> detailOrders) {
+        return (int) detailOrders.stream()
+                .map(detail -> detail.getMenu().getName())
+                .distinct()
+                .count();
     }
 }
 

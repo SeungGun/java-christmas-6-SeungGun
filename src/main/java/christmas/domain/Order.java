@@ -11,13 +11,14 @@ public class Order {
     private final List<DetailOrder> detailOrders;
 
     public Order(List<DetailOrder> detailOrders) {
-        validateMenuCount(detailOrders);
+        validateTotalMenuCount(detailOrders);
         validateMenuNameIncludedInMenuBoard(detailOrders);
         validateDuplicateMenuName(detailOrders);
+        validateEachMenuCount(detailOrders);
         this.detailOrders = detailOrders;
     }
 
-    private void validateMenuCount(List<DetailOrder> detailOrders) {
+    private void validateTotalMenuCount(List<DetailOrder> detailOrders) {
         if (detailOrders.isEmpty()
                 || calculateTotalMenuCount(detailOrders) > LIMIT_TOTAL_MENU_COUNT) {
             triggerArgException(INVALID_ORDER_MENU_COUNT);
@@ -43,11 +44,22 @@ public class Order {
         }
     }
 
+    private void validateEachMenuCount(List<DetailOrder> detailOrders) {
+        if (isNotPositiveMenuCount(detailOrders)) {
+            triggerArgException(INVALID_EACH_MENU_COUNT);
+        }
+    }
+
     private int calculateUniqueMenuNameCount(List<DetailOrder> detailOrders) {
         return (int) detailOrders.stream()
                 .map(detail -> detail.getMenu().getName())
                 .distinct()
                 .count();
+    }
+
+    private boolean isNotPositiveMenuCount(List<DetailOrder> detailOrders) {
+        return detailOrders.stream()
+                .anyMatch(detailOrder -> detailOrder.getCount() < 1);
     }
 }
 

@@ -1,11 +1,12 @@
 package christmas.domain;
 
 import christmas.ErrorMessage;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 
 class OrderTest {
@@ -20,12 +21,32 @@ class OrderTest {
                         21)); // 21개
 
         // when, then
-        Assertions.assertThatThrownBy(() -> new Order(detailOrders1))
+        assertThatThrownBy(() -> new Order(detailOrders1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_ORDER_MENU_COUNT.getMessage());
 
-        Assertions.assertThatThrownBy(() -> new Order(detailOrders2))
+        assertThatThrownBy(() -> new Order(detailOrders2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_ORDER_MENU_COUNT.getMessage());
+    }
+
+    @Test
+    void 메뉴판에_없는_메뉴_예외테스트() {
+        // given
+        String menuName1 = "abcd";
+        String menuName2 = "없는메뉴";
+
+        List<DetailOrder> detailOrders2 = List.of(
+                new DetailOrder(
+                        new Menu(menuName1, Category.MAIN, 5000),
+                        2),
+                new DetailOrder(
+                        new Menu(menuName2, Category.MAIN, 5000),
+                        2));
+
+        // when, then
+        assertThatThrownBy(() -> new Order(detailOrders2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NOT_EXIST_MENU_NAME_IN_MENU_BOARD.getMessage());
     }
 }

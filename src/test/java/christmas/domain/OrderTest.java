@@ -64,4 +64,21 @@ class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.DUPLICATE_MENU_NAME_IN_ORDER.getMessage());
     }
+
+    @Test
+    void 유효하지_않은_각_메뉴_개수_예외테스트() {
+        // given
+        String name = "아이스크림";
+        String name2 = "초코케이크";
+        Menu menu = MenuBoard.findMenuByName(name);
+        Menu menu2 = MenuBoard.findMenuByName(name2);
+
+        List<DetailOrder> detailOrders = List.of(
+                new DetailOrder(menu, 0),
+                new DetailOrder(menu2, -1));
+
+        assertThatThrownBy(() -> new Order(detailOrders))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_EACH_MENU_COUNT.getMessage());
+    }
 }

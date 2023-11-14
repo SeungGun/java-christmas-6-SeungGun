@@ -15,6 +15,7 @@ public class Order {
         validateMenuNameIncludedInMenuBoard(detailOrders);
         validateDuplicateMenuName(detailOrders);
         validateEachMenuCount(detailOrders);
+        validateOnlyBeverageMenu(detailOrders);
         this.detailOrders = detailOrders;
     }
 
@@ -32,12 +33,6 @@ public class Order {
                 .ifPresent(detailOrder -> triggerArgException(NOT_EXIST_MENU_NAME_IN_MENU_BOARD));
     }
 
-    private int calculateTotalMenuCount(List<DetailOrder> detailOrders) {
-        return detailOrders.stream()
-                .mapToInt(DetailOrder::getCount)
-                .sum();
-    }
-
     private void validateDuplicateMenuName(List<DetailOrder> detailOrders) {
         if (calculateUniqueMenuNameCount(detailOrders) != detailOrders.size()) {
             triggerArgException(DUPLICATE_MENU_NAME_IN_ORDER);
@@ -50,6 +45,18 @@ public class Order {
         }
     }
 
+    private void validateOnlyBeverageMenu(List<DetailOrder> detailOrders) {
+        if (isAllBeverageMenu(detailOrders)) {
+            triggerArgException(CANNOT_ORDER_MENU_IS_ALL_BEVERAGE);
+        }
+    }
+
+    private int calculateTotalMenuCount(List<DetailOrder> detailOrders) {
+        return detailOrders.stream()
+                .mapToInt(DetailOrder::getCount)
+                .sum();
+    }
+
     private int calculateUniqueMenuNameCount(List<DetailOrder> detailOrders) {
         return (int) detailOrders.stream()
                 .map(detail -> detail.getMenu().getName())
@@ -60,6 +67,13 @@ public class Order {
     private boolean isNotPositiveMenuCount(List<DetailOrder> detailOrders) {
         return detailOrders.stream()
                 .anyMatch(detailOrder -> detailOrder.getCount() < 1);
+    }
+
+    private boolean isAllBeverageMenu(List<DetailOrder> detailOrders) {
+        return detailOrders.stream()
+                .filter(detailOrder ->
+                        detailOrder.getMenu().getCategory() == Category.BEVERAGE)
+                .count() == detailOrders.size();
     }
 }
 

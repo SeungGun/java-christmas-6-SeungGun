@@ -60,6 +60,7 @@ class OrderTest {
                 new DetailOrder(menu, 2),
                 new DetailOrder(menu, 3));
 
+        // when, then
         assertThatThrownBy(() -> new Order(detailOrders))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.DUPLICATE_MENU_NAME_IN_ORDER.getMessage());
@@ -77,8 +78,28 @@ class OrderTest {
                 new DetailOrder(menu, 0),
                 new DetailOrder(menu2, -1));
 
+        // when, then
         assertThatThrownBy(() -> new Order(detailOrders))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_EACH_MENU_COUNT.getMessage());
+    }
+
+    @Test
+    void 음료만_주문_하는_예외테스트() {
+        // given
+        String name = "제로콜라";
+        String name2 = "레드와인";
+
+        Menu menu = MenuBoard.findMenuByName(name);
+        Menu menu2 = MenuBoard.findMenuByName(name2);
+
+        List<DetailOrder> detailOrders = List.of(
+                new DetailOrder(menu, 3),
+                new DetailOrder(menu2, 1));
+
+        // when, then
+        assertThatThrownBy(() -> new Order(detailOrders))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.CANNOT_ORDER_MENU_IS_ALL_BEVERAGE.getMessage());
     }
 }

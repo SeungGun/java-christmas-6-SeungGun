@@ -11,17 +11,25 @@ import static christmas.util.InputValidator.*;
 public class InputView {
 
     public static List<DetailOrder> readOrders() {
-        OutputView.printReadOrderMenu();
-        String input = Console.readLine();
+        try {
+            OutputView.printReadOrderMenu();
+            String input = Console.readLine();
 
-        return Converter.convertInputToDetailOrders(input);
+            return Converter.convertInputToDetailOrders(input);
+        } catch (IllegalArgumentException e) {
+            return readOrders();
+        }
     }
 
     public static int readVisitDay() {
-        OutputView.printReadVisitDay();
-        String input = Console.readLine();
+        try {
+            OutputView.printReadVisitDay();
+            String input = Console.readLine();
 
-        validateVisitDayInput(input);
-        return Integer.parseInt(input);
+            validateVisitDayInput(input);
+            return Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            return readVisitDay();
+        }
     }
 }

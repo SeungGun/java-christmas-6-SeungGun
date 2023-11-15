@@ -43,7 +43,7 @@ public class Order {
     }
 
     private void validateEachMenuCount(List<DetailOrder> detailOrders) {
-        if (isNotPositiveMenuCount(detailOrders)) {
+        if (hasNotPositiveMenuCount(detailOrders)) {
             triggerArgException(INVALID_EACH_MENU_COUNT);
         }
     }
@@ -67,7 +67,7 @@ public class Order {
                 .count();
     }
 
-    private boolean isNotPositiveMenuCount(List<DetailOrder> detailOrders) {
+    private boolean hasNotPositiveMenuCount(List<DetailOrder> detailOrders) {
         return detailOrders.stream()
                 .anyMatch(detailOrder -> detailOrder.getCount() < 1);
     }

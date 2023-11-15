@@ -34,5 +34,16 @@ public class EventPlanner {
         printTotalOrderAmountBeforeDiscount(order.getTotalOrderAmount());
         printGiftMenu(((GiftEvent) events.get(EventType.GIFT)).getGiftMenuWithCount(order));
         printAllBenefits(events, order, visitDate);
+        printTotalBenefit(calculateTotalBenefit(order, visitDate));
+        printEventBadge(Badge.getEventBadgeByBenefitAmount(calculateTotalBenefit(order, visitDate)));
+    }
+
+    private int calculateTotalBenefit(Order order, LocalDate visitDate) {
+        int sum = 0;
+        for (EventType eventType : events.keySet()) {
+            Event event = events.get(eventType);
+            sum += event.getBenefitAmount(order, visitDate);
+        }
+        return sum;
     }
 }

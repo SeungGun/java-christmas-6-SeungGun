@@ -1,10 +1,15 @@
 package christmas.ui;
 
 import christmas.domain.DetailOrder;
+import christmas.domain.EventType;
+import christmas.domain.Order;
+import christmas.service.Event;
 import christmas.util.ErrorMessage;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
     private static final DecimalFormat decimalFormat = new DecimalFormat("#,###");
@@ -41,5 +46,15 @@ public class OutputView {
             return;
         }
         System.out.println(detailOrder.getMenu().getName() + " " + detailOrder.getCount() + "개");
+    }
+
+    public static void printAllBenefits(Map<EventType, Event> events, Order order, LocalDate visitDate) {
+        System.out.println("<혜택 내역>");
+        events.forEach((key, value) -> {
+            if (value.getBenefitAmount(order, visitDate) > 0) {
+                System.out.println(key.getEventName() + ": "
+                        + decimalFormat.format(value.getBenefitAmount(order, visitDate) * -1) + "원");
+            }
+        });
     }
 }

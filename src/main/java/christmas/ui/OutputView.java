@@ -29,19 +29,19 @@ public class OutputView {
     }
 
     public static void printOrderMenus(List<DetailOrder> detailOrders) {
-        System.out.println("<주문 메뉴>");
+        System.out.println("\n<주문 메뉴>");
         detailOrders.forEach(detailOrder
                 -> System.out.println(detailOrder.getMenu().getName()
                 + " " + detailOrder.getCount() + "개"));
     }
 
     public static void printTotalOrderAmountBeforeDiscount(int amount) {
-        System.out.println("<할인 전 총주문 금액>");
+        System.out.println("\n<할인 전 총주문 금액>");
         System.out.println(decimalFormat.format(amount));
     }
 
     public static void printGiftMenu(DetailOrder detailOrder) {
-        System.out.println("<증정 메뉴>");
+        System.out.println("\n<증정 메뉴>");
         if (detailOrder == null) {
             System.out.println("없음");
             return;
@@ -50,7 +50,7 @@ public class OutputView {
     }
 
     public static void printAllBenefits(Map<EventType, Event> events, Order order, LocalDate visitDate) {
-        System.out.println("<혜택 내역>");
+        System.out.println("\n<혜택 내역>");
         boolean isPrinted = false;
         for (EventType eventType : events.keySet()) {
             Event event = events.get(eventType);
@@ -71,18 +71,18 @@ public class OutputView {
     }
 
     public static void printTotalBenefit(int totalBenefit) {
-        System.out.println("<총혜택 금액>");
+        System.out.println("\n<총혜택 금액>");
         System.out.println(decimalFormat.format(totalBenefit * -1) + "원");
     }
 
 
     public static void printPaymentAmountAfterDiscount(int paymentAmount) {
-        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.println("\n<할인 후 예상 결제 금액>");
         System.out.println(decimalFormat.format(paymentAmount) + "원");
     }
 
     public static void printEventBadge(Badge badge) {
-        System.out.println("<12월 이벤트 배치>");
+        System.out.println("\n<12월 이벤트 배지>");
         if (badge == null) {
             System.out.println("없음");
             return;

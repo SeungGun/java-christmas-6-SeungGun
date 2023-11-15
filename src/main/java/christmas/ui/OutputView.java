@@ -50,12 +50,23 @@ public class OutputView {
 
     public static void printAllBenefits(Map<EventType, Event> events, Order order, LocalDate visitDate) {
         System.out.println("<혜택 내역>");
-        events.forEach((key, value) -> {
-            if (value.getBenefitAmount(order, visitDate) > 0) {
-                System.out.println(key.getEventName() + ": "
-                        + decimalFormat.format(value.getBenefitAmount(order, visitDate) * -1) + "원");
-            }
-        });
+        boolean isPrinted = false;
+        for (EventType eventType : events.keySet()) {
+            Event event = events.get(eventType);
+            isPrinted = printExistBenefit(eventType, event, order, visitDate);
+        }
+        if (!isPrinted) {
+            System.out.println("없음");
+        }
+    }
+
+    private static boolean printExistBenefit(EventType eventType, Event event, Order order, LocalDate visitDate) {
+        if (event.getBenefitAmount(order, visitDate) > 0) {
+            System.out.println(eventType.getEventName() + ": "
+                    + decimalFormat.format(event.getBenefitAmount(order, visitDate) * -1) + "원");
+            return true;
+        }
+        return false;
     }
 
     public static void printTotalBenefit(int totalBenefit) {

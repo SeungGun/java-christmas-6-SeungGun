@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 class ConverterTest {
 
     @ParameterizedTest
-    @ValueSource(strings = {"타파스2,시저샐러드3", "샴페인-한개,제로콜라-두개", "바비큐립, 초코케이크"})
+    @ValueSource(strings = {"타파스2,시저샐러드3", "샴페인-한개,제로콜라-두개", "바비큐립,초코케이크"})
     void 유효하지_않은_주문_입력_예외테스트(String argument) {
         assertThatThrownBy(() -> Converter.convertInputToDetailOrders(argument))
                 .isInstanceOf(IllegalArgumentException.class)

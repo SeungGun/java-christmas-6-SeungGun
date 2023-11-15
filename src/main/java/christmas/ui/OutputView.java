@@ -62,4 +62,10 @@ public class OutputView {
         System.out.println("<총혜택 금액>");
         System.out.println(decimalFormat.format(totalBenefit * -1) + "원");
     }
+
+
+    public static void printPaymentAmountAfterDiscount(int paymentAmount) {
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.println(decimalFormat.format(paymentAmount) + "원");
+    }
 }

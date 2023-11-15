@@ -1,6 +1,10 @@
 package christmas.domain;
 
 import java.util.List;
+import java.util.Optional;
+
+import static christmas.ErrorMessage.*;
+import static christmas.ExceptionHandler.*;
 
 public class MenuBoard {
     public static final List<Menu> menus = List.of(
@@ -23,10 +27,14 @@ public class MenuBoard {
                 .anyMatch(menu -> menu.getName().equals(name));
     }
 
-    public static Menu findMenuByName(String name){
-        return menus.stream()
+    public static Menu findMenuByName(String name) {
+        Optional<Menu> optionalMenu = menus.stream()
                 .filter(menu -> menu.getName().equals(name))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
+
+        if (optionalMenu.isEmpty()) {
+            triggerArgException(NOT_EXIST_MENU_NAME_IN_MENU_BOARD);
+        }
+        return optionalMenu.get();
     }
 }

@@ -25,8 +25,17 @@ public class EventPlanner {
     }
 
     public void show() {
-        int visitDay = InputView.readVisitDay();
-        Order order = new Order(InputView.readOrders());
+        int visitDay = InputView.readVisitDay(null);
+        Order order = new Order(InputView.readOrders(null));
+        LocalDate visitDate = LocalDate.of(EVENT_YEAR, EVENT_MONTH, visitDay);
+
+        printEventTitleOnDate(visitDay);
+        processBenefit(order, visitDate);
+    }
+
+    public void showWithArgs(String[] args) {
+        int visitDay = InputView.readVisitDay(args[0]);
+        Order order = new Order(InputView.readOrders(args[1]));
         LocalDate visitDate = LocalDate.of(EVENT_YEAR, EVENT_MONTH, visitDay);
 
         printEventTitleOnDate(visitDay);

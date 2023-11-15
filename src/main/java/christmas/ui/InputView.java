@@ -10,26 +10,30 @@ import static christmas.util.InputValidator.*;
 
 public class InputView {
 
-    public static List<DetailOrder> readOrders() {
+    public static List<DetailOrder> readOrders(String argument) {
         try {
             OutputView.printReadOrderMenu();
             String input = Console.readLine();
-
+            if (argument != null && !argument.isEmpty()) {
+                input = argument;
+            }
             return Converter.convertInputToDetailOrders(input);
         } catch (IllegalArgumentException e) {
-            return readOrders();
+            return readOrders(argument);
         }
     }
 
-    public static int readVisitDay() {
+    public static int readVisitDay(String argument) {
         try {
             OutputView.printReadVisitDay();
             String input = Console.readLine();
-
+            if (argument != null && !argument.isEmpty()) {
+                input = argument;
+            }
             validateVisitDayInput(input);
             return Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
-            return readVisitDay();
+            return readVisitDay(argument);
         }
     }
 }

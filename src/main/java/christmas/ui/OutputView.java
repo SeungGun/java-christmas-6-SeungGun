@@ -28,6 +28,10 @@ public class OutputView {
                 + "\n12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
     }
 
+    public static void printEventTitleOnDate(int day) {
+        System.out.println("12월 " + day + "일에 우테코 식당에서 받을 이벤트 혜택 미리보기!");
+    }
+
     public static void printOrderMenus(List<DetailOrder> detailOrders) {
         System.out.println("\n<주문 메뉴>");
         detailOrders.forEach(detailOrder

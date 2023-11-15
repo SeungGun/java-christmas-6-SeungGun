@@ -88,5 +88,9 @@ public class Order {
                 .mapToInt(DetailOrder::getCount)
                 .sum();
     }
+
+    public List<DetailOrder> getDetailOrders() {
+        return this.detailOrders;
+    }
 }
 

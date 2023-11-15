@@ -44,7 +44,7 @@ public class EventPlanner {
         printEventBadge(Badge.getEventBadgeByBenefitAmount(calculateTotalBenefit(order, visitDate)));
     }
 
-    private int calculateTotalBenefit(Order order, LocalDate visitDate) {
+    public int calculateTotalBenefit(Order order, LocalDate visitDate) {
         int sum = 0;
         for (EventType eventType : events.keySet()) {
             Event event = events.get(eventType);
@@ -53,7 +53,7 @@ public class EventPlanner {
         return sum;
     }
 
-    private int calculateTotalDiscountAmount(Order order, LocalDate visitDate) {
+    public int calculateTotalDiscountAmount(Order order, LocalDate visitDate) {
         int sum = 0;
         for (EventType eventType : events.keySet()) {
             Event event = events.get(eventType);

@@ -17,13 +17,17 @@ public class GiftEvent implements Event {
             return 0;
         }
 
-        if (order.getTotalOrderAmount() >= MIN_GIFT_CONDITION) {
-            return getGiftMenuWithCount().calculateTotalAmount();
+        DetailOrder gift = getGiftMenuWithCount(order);
+        if (gift != null) {
+            return gift.calculateTotalAmount();
         }
         return 0;
     }
 
-    public DetailOrder getGiftMenuWithCount() {
-        return new DetailOrder(MenuBoard.findMenuByName(GIFT_MENU), GIFT_COUNT);
+    public DetailOrder getGiftMenuWithCount(Order order) {
+        if (order.getTotalOrderAmount() >= MIN_GIFT_CONDITION) {
+            return new DetailOrder(MenuBoard.findMenuByName(GIFT_MENU), GIFT_COUNT);
+        }
+        return null;
     }
 }

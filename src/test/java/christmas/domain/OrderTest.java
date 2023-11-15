@@ -103,4 +103,47 @@ class OrderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.CANNOT_ORDER_MENU_IS_ALL_BEVERAGE.getMessage());
     }
+
+    @Test
+    void 할인_전_총_주문_금액_테스트() {
+        // given
+        String name = "티본스테이크";
+        String name2 = "레드와인";
+
+        Menu menu = MenuBoard.findMenuByName(name);
+        Menu menu2 = MenuBoard.findMenuByName(name2);
+
+        MenuBoard.findMenuByName(name2);
+        Order order = new Order(List.of(
+                new DetailOrder(menu, 1),
+                new DetailOrder(menu2, 2)));
+
+        assertThat(order.getTotalOrderAmount()).
+                isEqualTo(175000);
+    }
+
+    @Test
+    void 특정_카테고리에_해당하는_메뉴의_총개수_테스트() {
+        // given
+        Menu menu1 = MenuBoard.findMenuByName("타파스");
+        Menu menu2 = MenuBoard.findMenuByName("바비큐립");
+        Menu menu3 = MenuBoard.findMenuByName("해산물파스타");
+        Menu menu4 = MenuBoard.findMenuByName("초코케이크");
+        Menu menu5 = MenuBoard.findMenuByName("제로콜라");
+
+        Category testCategory1 = Category.MAIN;
+        Category testCategory2 = Category.DESSERT;
+
+        Order order = new Order(List.of(
+                new DetailOrder(menu1, 2),
+                new DetailOrder(menu2, 3),
+                new DetailOrder(menu3, 2),
+                new DetailOrder(menu4, 2),
+                new DetailOrder(menu5, 1)));
+
+        assertThat(order.calculateMenuCountByCategory(testCategory1))
+                .isEqualTo(5);
+        assertThat(order.calculateMenuCountByCategory(testCategory2))
+                .isEqualTo(2);
+    }
 }

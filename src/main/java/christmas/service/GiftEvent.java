@@ -1,4 +1,8 @@
-package christmas.domain;
+package christmas.service;
+
+import christmas.domain.DetailOrder;
+import christmas.domain.MenuBoard;
+import christmas.domain.Order;
 
 import java.time.LocalDate;
 

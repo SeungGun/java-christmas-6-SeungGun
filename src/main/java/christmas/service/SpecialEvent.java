@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.service;
+
+import christmas.domain.Order;
 
 import java.time.LocalDate;
 import java.util.List;

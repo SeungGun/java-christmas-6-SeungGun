@@ -1,4 +1,7 @@
-package christmas.domain;
+package christmas.service;
+
+import christmas.domain.Order;
+import christmas.service.Event;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;

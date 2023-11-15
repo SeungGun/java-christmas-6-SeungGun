@@ -75,5 +75,11 @@ public class Order {
                         detailOrder.getMenu().getCategory() == Category.BEVERAGE)
                 .count() == detailOrders.size();
     }
+
+    public int getTotalOrderAmount() {
+        return detailOrders.stream()
+                .mapToInt(DetailOrder::calculateTotalAmount)
+                .sum();
+    }
 }
 

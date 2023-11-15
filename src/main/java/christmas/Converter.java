@@ -14,7 +14,7 @@ public class Converter {
 
     public static List<DetailOrder> convertInputToDetailOrders(String input) {
         List<DetailOrder> orders = new ArrayList<>();
-        String[] menus = splitIntoMenus(input);
+        String[] menus = splitIntoMenus(removeSpace(input));
         for (String menuAndCount : menus) {
             String[] menuAndCounts = splitIntoMenuAndCount(menuAndCount);
 
@@ -32,5 +32,9 @@ public class Converter {
 
     private static String[] splitIntoMenuAndCount(String input) {
         return input.split(MENU_COUNT_SPLIT_REGEX);
+    }
+
+    private static String removeSpace(String input) {
+        return input.replace(" ", "");
     }
 }

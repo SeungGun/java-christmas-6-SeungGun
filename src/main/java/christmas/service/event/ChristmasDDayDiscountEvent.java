@@ -5,7 +5,7 @@ import christmas.domain.Order;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class ChristmasDDayEvent implements Event {
+public class ChristmasDDayDiscountEvent implements Event {
     private static final int START_AMOUNT = 1000;
     private static final int INCREASING_AMOUNT = 100;
     private static final LocalDate startDate = LocalDate.of(2023, 12, 1);

@@ -17,11 +17,11 @@ public class EventPlanner {
     private final Map<EventType, Event> events = new HashMap<>();
 
     public EventPlanner() {
-        events.put(EventType.CHRISTMAS_D_DAY, new ChristmasDDayEvent());
-        events.put(EventType.WEEKDAY, new WeekdayEvent());
-        events.put(EventType.WEEKEND, new WeekendEvent());
+        events.put(EventType.CHRISTMAS_D_DAY, new ChristmasDDayDiscountEvent());
+        events.put(EventType.WEEKDAY, new WeekdayDiscountEvent());
+        events.put(EventType.WEEKEND, new WeekendDiscountEvent());
         events.put(EventType.GIFT, new GiftEvent());
-        events.put(EventType.SPECIAL, new SpecialEvent());
+        events.put(EventType.SPECIAL, new SpecialDiscountEvent());
     }
 
     public void show() {

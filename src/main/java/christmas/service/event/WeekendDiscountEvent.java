@@ -7,7 +7,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 
-public class WeekendEvent implements Event {
+public class WeekendDiscountEvent implements Event {
     private static final Category BENEFIT_CATEGORY = Category.MAIN;
     private final List<DayOfWeek> eventDayOfWeeks = List.of(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY);
     private static final int BENEFIT_AMOUNT = 2023;

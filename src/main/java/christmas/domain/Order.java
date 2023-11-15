@@ -81,5 +81,12 @@ public class Order {
                 .mapToInt(DetailOrder::calculateTotalAmount)
                 .sum();
     }
+
+    public int calculateMenuCountByCategory(Category category) {
+        return detailOrders.stream()
+                .filter(detailOrder -> detailOrder.getMenu().getCategory() == category)
+                .mapToInt(DetailOrder::getCount)
+                .sum();
+    }
 }
 

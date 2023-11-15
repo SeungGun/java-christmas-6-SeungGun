@@ -1,4 +1,4 @@
-package christmas;
+package christmas.util;
 
 import christmas.domain.DetailOrder;
 import org.junit.jupiter.params.ParameterizedTest;

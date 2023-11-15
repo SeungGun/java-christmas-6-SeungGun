@@ -1,4 +1,4 @@
-package christmas;
+package christmas.util;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;

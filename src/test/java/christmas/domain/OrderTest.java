@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.ErrorMessage;
+import christmas.util.ErrorMessage;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

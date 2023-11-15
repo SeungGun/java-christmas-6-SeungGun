@@ -14,13 +14,13 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             run("3", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
             assertThat(output()).contains(
-                "<주문 메뉴>",
-                "<할인 전 총주문 금액>",
-                "<증정 메뉴>",
-                "<혜택 내역>",
-                "<총혜택 금액>",
-                "<할인 후 예상 결제 금액>",
-                "<12월 이벤트 배지>"
+                    "<주문 메뉴>",
+                    "<할인 전 총주문 금액>",
+                    "<증정 메뉴>",
+                    "<혜택 내역>",
+                    "<총혜택 금액>",
+                    "<할인 후 예상 결제 금액>",
+                    "<12월 이벤트 배지>"
             );
         });
     }
@@ -46,6 +46,35 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             runException("3", "제로콜라-a");
             assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 주문_중복_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("3", "타파스-1,타파스2");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 이벤트_배지_혜택_내역_출력() {
+        assertSimpleTest(() -> {
+            run("3", "티본스테이크-10");
+            assertThat(output()).contains("산타");
+        });
+    }
+
+    @Test
+    void 혜택_받은_내역_이벤트_타이틀_출력() {
+        assertSimpleTest(() -> {
+            run("3", "타파스-2,티본스테이크-3,아이스크림-2,제로콜라-4,바비큐립-1");
+            assertThat(output()).contains(
+                    "크리스마스 디데이 할인",
+                    "평일 할인",
+                    "특별 할인",
+                    "증정 이벤트");
+
         });
     }
 

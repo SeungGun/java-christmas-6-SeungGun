@@ -3,7 +3,8 @@ package christmas.domain;
 public enum Badge {
     STAR("별", 5000),
     TREE("나무", 10000),
-    SANTA("산타", 20000);
+    SANTA("산타", 20000),
+    NONE("없음", 0);
     final String badgeName;
     final int benefitAmount;
 
@@ -13,16 +14,16 @@ public enum Badge {
     }
 
     public static Badge getEventBadgeByBenefitAmount(int amount) {
-        if (amount >= SANTA.benefitAmount) {
+        if (amount >= SANTA.getBenefitAmount()) {
             return SANTA;
         }
-        if (amount >= TREE.benefitAmount) {
+        if (amount >= TREE.getBenefitAmount()) {
             return TREE;
         }
-        if (amount >= STAR.benefitAmount) {
+        if (amount >= STAR.getBenefitAmount()) {
             return STAR;
         }
-        return null;
+        return NONE;
     }
 
     public int getBenefitAmount() {

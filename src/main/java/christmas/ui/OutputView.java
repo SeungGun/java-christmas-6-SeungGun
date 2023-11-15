@@ -57,4 +57,9 @@ public class OutputView {
             }
         });
     }
+
+    public static void printTotalBenefit(int totalBenefit) {
+        System.out.println("<총혜택 금액>");
+        System.out.println(decimalFormat.format(totalBenefit * -1) + "원");
+    }
 }

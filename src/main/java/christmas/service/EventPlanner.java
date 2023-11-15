@@ -26,16 +26,20 @@ public class EventPlanner {
     public void show() {
         int visitDay = InputView.readVisitDay();
         Order order = new Order(InputView.readOrders());
-
         LocalDate visitDate = LocalDate.of(EVENT_YEAR, EVENT_MONTH, visitDay);
 
         printEventTitleOnDate(visitDay);
+        processBenefit(order, visitDate);
+    }
+
+    private void processBenefit(Order order, LocalDate visitDate) {
+        int totalOrderAmount = order.getTotalOrderAmount();
         printOrderMenus(order.getDetailOrders());
-        printTotalOrderAmountBeforeDiscount(order.getTotalOrderAmount());
+        printTotalOrderAmountBeforeDiscount(totalOrderAmount);
         printGiftMenu(((GiftEvent) events.get(EventType.GIFT)).getGiftMenuWithCount(order));
         printAllBenefits(events, order, visitDate);
         printTotalBenefit(calculateTotalBenefit(order, visitDate));
-        printPaymentAmountAfterDiscount(order.getTotalOrderAmount() - calculateTotalDiscountAmount(order, visitDate));
+        printPaymentAmountAfterDiscount(totalOrderAmount - calculateTotalDiscountAmount(order, visitDate));
         printEventBadge(Badge.getEventBadgeByBenefitAmount(calculateTotalBenefit(order, visitDate)));
     }
 

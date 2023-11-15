@@ -1,5 +1,6 @@
 package christmas.ui;
 
+import christmas.domain.Badge;
 import christmas.domain.DetailOrder;
 import christmas.domain.EventType;
 import christmas.domain.Order;
@@ -78,5 +79,14 @@ public class OutputView {
     public static void printPaymentAmountAfterDiscount(int paymentAmount) {
         System.out.println("<할인 후 예상 결제 금액>");
         System.out.println(decimalFormat.format(paymentAmount) + "원");
+    }
+
+    public static void printEventBadge(Badge badge) {
+        System.out.println("<12월 이벤트 배치>");
+        if (badge == null) {
+            System.out.println("없음");
+            return;
+        }
+        System.out.println(badge.getBadgeName());
     }
 }

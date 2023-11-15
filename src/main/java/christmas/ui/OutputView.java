@@ -37,7 +37,7 @@ public class OutputView {
 
     public static void printTotalOrderAmountBeforeDiscount(int amount) {
         System.out.println("\n<할인 전 총주문 금액>");
-        System.out.println(decimalFormat.format(amount));
+        System.out.println(decimalFormat.format(amount) + "원");
     }
 
     public static void printGiftMenu(DetailOrder detailOrder) {

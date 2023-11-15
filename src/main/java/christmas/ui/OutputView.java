@@ -3,9 +3,12 @@ package christmas.ui;
 import christmas.domain.DetailOrder;
 import christmas.util.ErrorMessage;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
+    private static final DecimalFormat decimalFormat = new DecimalFormat("#,###");
+
     public static void printErrorMessage(ErrorMessage message) {
         System.out.println("[ERROR] " + message.getMessage());
     }
@@ -24,5 +27,10 @@ public class OutputView {
         detailOrders.forEach(detailOrder
                 -> System.out.println(detailOrder.getMenu().getName()
                 + " " + detailOrder.getCount() + "개"));
+    }
+
+    public static void printTotalOrderAmountBeforeDiscount(int amount) {
+        System.out.println("<할인 전 총주문 금액>");
+        System.out.println(decimalFormat.format(amount));
     }
 }

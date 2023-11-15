@@ -33,4 +33,13 @@ public class OutputView {
         System.out.println("<할인 전 총주문 금액>");
         System.out.println(decimalFormat.format(amount));
     }
+
+    public static void printGiftMenu(DetailOrder detailOrder) {
+        System.out.println("<증정 메뉴>");
+        if (detailOrder == null) {
+            System.out.println("없음");
+            return;
+        }
+        System.out.println(detailOrder.getMenu().getName() + " " + detailOrder.getCount() + "개");
+    }
 }

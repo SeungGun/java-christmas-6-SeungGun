@@ -1,4 +1,4 @@
-package christmas;
+package christmas.util;
 
 public enum ErrorMessage {
     INVALID_ORDER_MENU_COUNT("유효하지 않은 주문입니다. 다시 입력해주세요."),

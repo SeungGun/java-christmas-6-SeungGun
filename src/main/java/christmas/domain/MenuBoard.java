@@ -3,8 +3,8 @@ package christmas.domain;
 import java.util.List;
 import java.util.Optional;
 
-import static christmas.ErrorMessage.*;
-import static christmas.ExceptionHandler.*;
+import static christmas.util.ErrorMessage.*;
+import static christmas.util.ExceptionHandler.*;
 
 public class MenuBoard {
     public static final List<Menu> menus = List.of(

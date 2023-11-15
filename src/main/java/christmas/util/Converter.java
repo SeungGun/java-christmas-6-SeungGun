@@ -1,4 +1,4 @@
-package christmas;
+package christmas.util;
 
 import christmas.domain.DetailOrder;
 import christmas.domain.MenuBoard;
@@ -6,7 +6,7 @@ import christmas.domain.MenuBoard;
 import java.util.ArrayList;
 import java.util.List;
 
-import static christmas.InputValidator.*;
+import static christmas.util.InputValidator.*;
 
 public class Converter {
     private static final String MENU_SPLIT_REGEX = ",";

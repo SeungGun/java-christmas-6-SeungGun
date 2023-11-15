@@ -1,7 +1,7 @@
-package christmas;
+package christmas.util;
 
-import static christmas.ErrorMessage.*;
-import static christmas.ExceptionHandler.*;
+import static christmas.util.ErrorMessage.*;
+import static christmas.util.ExceptionHandler.*;
 
 public class InputValidator {
     private static final int INPUT_MENU_WITH_COUNT_SPLIT_SIZE = 2;

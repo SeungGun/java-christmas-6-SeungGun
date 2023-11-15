@@ -1,4 +1,7 @@
-package christmas;
+package christmas.util;
+
+import christmas.ui.OutputView;
+import christmas.util.ErrorMessage;
 
 public class ExceptionHandler {
 

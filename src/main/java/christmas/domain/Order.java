@@ -2,8 +2,8 @@ package christmas.domain;
 
 import java.util.List;
 
-import static christmas.ErrorMessage.*;
-import static christmas.ExceptionHandler.*;
+import static christmas.util.ErrorMessage.*;
+import static christmas.util.ExceptionHandler.*;
 
 public class Order {
     private static final int LIMIT_TOTAL_MENU_COUNT = 20;

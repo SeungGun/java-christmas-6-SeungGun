@@ -2,6 +2,7 @@ package christmas.domain;
 
 import christmas.service.MenuBoard;
 
+import java.util.Collections;
 import java.util.List;
 
 import static christmas.util.ErrorMessage.*;
@@ -92,7 +93,7 @@ public class Order {
     }
 
     public List<DetailOrder> getDetailOrders() {
-        return this.detailOrders;
+        return Collections.unmodifiableList(this.detailOrders);
     }
 }
 

@@ -16,4 +16,8 @@ public class DetailOrder {
     public int getCount() {
         return count;
     }
+
+    public int calculateTotalAmount() {
+        return this.menu.getPrice() * this.count;
+    }
 }

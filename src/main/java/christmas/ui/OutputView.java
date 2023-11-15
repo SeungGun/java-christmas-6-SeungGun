@@ -1,4 +1,6 @@
-package christmas;
+package christmas.ui;
+
+import christmas.util.ErrorMessage;
 
 public class OutputView {
     public static void printErrorMessage(ErrorMessage message) {

@@ -1,11 +1,12 @@
-package christmas;
+package christmas.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.DetailOrder;
+import christmas.util.Converter;
 
 import java.util.List;
 
-import static christmas.InputValidator.*;
+import static christmas.util.InputValidator.*;
 
 public class InputView {
 

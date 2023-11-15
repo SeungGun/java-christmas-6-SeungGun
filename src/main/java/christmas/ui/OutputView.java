@@ -4,7 +4,7 @@ import christmas.domain.Badge;
 import christmas.domain.DetailOrder;
 import christmas.domain.EventType;
 import christmas.domain.Order;
-import christmas.service.Event;
+import christmas.service.event.Event;
 import christmas.util.ErrorMessage;
 
 import java.text.DecimalFormat;

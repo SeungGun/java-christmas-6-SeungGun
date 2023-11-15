@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.service.MenuBoard;
+
 import java.util.List;
 
 import static christmas.util.ErrorMessage.*;

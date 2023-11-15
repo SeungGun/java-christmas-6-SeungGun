@@ -1,4 +1,7 @@
-package christmas.domain;
+package christmas.service;
+
+import christmas.domain.Category;
+import christmas.domain.Menu;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.event;
 
 import christmas.domain.Category;
 import christmas.domain.Order;

@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.service.MenuBoard;
 import christmas.util.ErrorMessage;
 import org.junit.jupiter.api.Test;
 

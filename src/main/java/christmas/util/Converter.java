@@ -1,7 +1,7 @@
 package christmas.util;
 
 import christmas.domain.DetailOrder;
-import christmas.domain.MenuBoard;
+import christmas.service.MenuBoard;
 
 import java.util.ArrayList;
 import java.util.List;

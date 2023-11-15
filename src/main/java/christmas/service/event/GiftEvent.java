@@ -1,8 +1,8 @@
-package christmas.service;
+package christmas.service.event;
 
 import christmas.domain.DetailOrder;
-import christmas.domain.MenuBoard;
 import christmas.domain.Order;
+import christmas.service.MenuBoard;
 
 import java.time.LocalDate;
 
